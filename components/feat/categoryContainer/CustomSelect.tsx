@@ -1,6 +1,5 @@
-import { useState } from "react";
+import React, { SetStateAction, useState } from "react";
 import styled from "styled-components";
-import { options } from "../../../dummy/options";
 import Select from "./Select";
 import SelectOptions from "./SelectOptions";
 
@@ -11,19 +10,21 @@ const StyledSelectTag = styled.div`
     width: 140px
 `
 type Props = {
-    selectName: keyof typeof options
-    listName: keyof typeof options
+    selectName: string
+    listName: string
     menuList: string[]
+    setSelected: React.Dispatch<SetStateAction<string[]>>
+    selected: string[]
 }
 
-function CustomSelect({selectName, listName, menuList} : Props){
+function CustomSelect({selectName, listName, menuList, setSelected, selected} : Props){
     const [isClicked, setIsClicked] = useState(false);
     return(
         <StyledSelectTag>
-            <Select selectName={selectName} setIsClicked={setIsClicked}/>
+            <Select selectName={selectName} setIsClicked={setIsClicked} isClicked={isClicked}/>
             {
                 isClicked &&
-                    <SelectOptions listName={listName} menuList={menuList}/>
+                    <SelectOptions listName={listName} menuList={menuList} setSelected={setSelected} selected={selected}/>
             }
         </StyledSelectTag>
     )

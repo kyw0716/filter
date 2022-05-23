@@ -1,6 +1,6 @@
 import SelectedCategories from "./SelectedCategories"
 import styled from 'styled-components';
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { options } from "../../../dummy/options";
 import CustomSelect from "./CustomSelect";
 
@@ -15,23 +15,57 @@ const StyledContainer = styled.div`
     display : flex;
     flex-direction : column;
     align-items : center;
+    position: relative;
 `;
 
 const Container = () => {
-    useEffect(()=>{
-        localStorage.setItem("options",JSON.stringify(options));
-    },[]);
+    const [selected, setSelected] = useState([""]);
 
     return(
         <StyledContainer>
             <StyledSelectBox>
-                <CustomSelect key="type" listName={"유형" as keyof typeof options} selectName={"유형" as keyof typeof options} menuList={options.type.menuList}/>
-                <CustomSelect key="adjective" listName={"형용사" as keyof typeof options} selectName={"형용사" as keyof typeof options} menuList={options.adjective.menuList}/>
-                <CustomSelect key="genre" listName={"장르" as keyof typeof options} selectName={"장르" as keyof typeof options} menuList={options.genre.menuList}/>
-                <CustomSelect key="extension" listName={"확장자" as keyof typeof options} selectName={"확장자" as keyof typeof options} menuList={options.extension.menuList}/>
-                <CustomSelect key="sort" listName={"정렬" as keyof typeof options} selectName={"정렬" as keyof typeof options} menuList={options.sort.menuList}/>
+                <CustomSelect 
+                    key="type" 
+                    listName={"유형" as keyof typeof options} 
+                    selectName={"유형" as keyof typeof options} 
+                    menuList={options.type.menuList} 
+                    setSelected={setSelected}
+                    selected={selected}
+                />
+                <CustomSelect 
+                    key="adjective" 
+                    listName={"형용사" as keyof typeof options} 
+                    selectName={"형용사" as keyof typeof options} 
+                    menuList={options.adjective.menuList} 
+                    setSelected={setSelected}
+                    selected={selected}
+                />
+                <CustomSelect 
+                    key="genre" 
+                    listName={"장르" as keyof typeof options} 
+                    selectName={"장르" as keyof typeof options} 
+                    menuList={options.genre.menuList} 
+                    setSelected={setSelected}
+                    selected={selected}
+                />
+                <CustomSelect 
+                    key="extension" 
+                    listName={"확장자" as keyof typeof options} 
+                    selectName={"확장자" as keyof typeof options} 
+                    menuList={options.extension.menuList} 
+                    setSelected={setSelected}
+                    selected={selected}
+                />
+                <CustomSelect 
+                    key="sort" 
+                    listName={"정렬" as keyof typeof options} 
+                    selectName={"정렬" as keyof typeof options} 
+                    menuList={options.sort.menuList} 
+                    setSelected={setSelected}
+                    selected={selected}
+                />
             </StyledSelectBox>
-            <SelectedCategories />
+            <SelectedCategories selectedArray={selected} setSelected={setSelected}/>
         </StyledContainer>
     )
 }

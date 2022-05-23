@@ -5,13 +5,31 @@ import React, { SetStateAction } from "react";
 
 const StyledSelectedValue = styled.div`
     display: flex;
-    border: 1px solid;
-    padding: 10px;
+    height: 50px;
     align-items: center;
     width: inherit;
     font-size: 15px;
     justify-content: space-around;
     position: relative;
+    border-radius: 7px;
+    border: 2px solid #cfd1d0;
+    background-color: #262626;
+    color: #cfd1d0;
+    font-weight: bold;
+`
+const StyledSelectedValueClicked = styled.div`
+    display: flex;
+    height: 50px;
+    align-items: center;
+    width: inherit;
+    font-size: 15px;
+    justify-content: space-around;
+    position: relative;
+    border-radius: 7px;
+    border: 2px solid #fa2911;
+    background-color: #242424;
+    color: #cfd1d0;
+    font-weight: bold;
 `
 
 const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
@@ -22,18 +40,29 @@ const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
 type Props = {
     selectName : string
     setIsClicked : React.Dispatch<SetStateAction<boolean>>
+    isClicked : boolean
 }
 
-function Select({selectName, setIsClicked} : Props) {
+function Select({selectName, setIsClicked, isClicked} : Props) {
     const SelectOnClick = () => {
         setIsClicked(currrent => !currrent);
     }
 
     return(
-        <StyledSelectedValue onClick={SelectOnClick}>
-            <div>{selectName}</div>
-            <StyledFontAwesomeIcon icon={faAngleDown} />
-        </StyledSelectedValue>
+        <>
+        {
+            isClicked ?
+                <StyledSelectedValueClicked onClick={SelectOnClick}>
+                    <div>{selectName}</div>
+                    <StyledFontAwesomeIcon icon={faAngleDown} />
+                </StyledSelectedValueClicked>
+            :
+                <StyledSelectedValue onClick={SelectOnClick}>
+                    <div>{selectName}</div>
+                    <StyledFontAwesomeIcon icon={faAngleDown} />
+                </StyledSelectedValue>
+        }
+        </>
     )
 }
 export default Select;

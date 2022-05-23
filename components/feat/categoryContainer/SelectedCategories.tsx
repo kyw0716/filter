@@ -1,7 +1,7 @@
 const SelectedCategories = () => {
     return(
         <div>
-            SelectedCategories
+            
         </div>
     )
 }

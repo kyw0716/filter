@@ -1,41 +1,41 @@
-import SelectedCategories from "./SelectedCategories"
+import SelectedCategories from "./CategoryStack"
 import styled from 'styled-components';
 import { useState } from "react";
 import { options } from "../../../dummy/options";
 import CustomSelect from "./CustomSelect";
 
-const StyledSelectBox = styled.div`
-    margin-top: 50px;
-    display: flex;
-    width: 60%;
-    justify-content: space-around;
-`
-
 const StyledContainer = styled.div`
     display : flex;
     flex-direction : column;
     align-items : center;
+    justify-content: center;
     position: relative;
-`;
+`
+const StyledSelectSection = styled.div`
+    margin-top: 50px;
+    display: flex;
+    width: 60%;
+    justify-content: space-between;
+`
 
 const Container = () => {
     const [selected, setSelected] = useState([""]);
 
     return(
         <StyledContainer>
-            <StyledSelectBox>
+            <StyledSelectSection>
                 <CustomSelect 
                     key="type" 
-                    listName={"유형" as keyof typeof options} 
-                    selectName={"유형" as keyof typeof options} 
+                    listName={"유형"} 
+                    selectName={"유형"} 
                     menuList={options.type.menuList} 
                     setSelected={setSelected}
                     selected={selected}
                 />
                 <CustomSelect 
                     key="adjective" 
-                    listName={"형용사" as keyof typeof options} 
-                    selectName={"형용사" as keyof typeof options} 
+                    listName={"형용사"} 
+                    selectName={"형용사"} 
                     menuList={options.adjective.menuList} 
                     setSelected={setSelected}
                     selected={selected}
@@ -64,7 +64,7 @@ const Container = () => {
                     setSelected={setSelected}
                     selected={selected}
                 />
-            </StyledSelectBox>
+            </StyledSelectSection>
             <SelectedCategories selectedArray={selected} setSelected={setSelected}/>
         </StyledContainer>
     )

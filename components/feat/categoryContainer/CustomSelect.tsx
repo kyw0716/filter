@@ -1,7 +1,7 @@
 import React, { SetStateAction, useState } from "react";
 import styled from "styled-components";
 import Select from "./Select";
-import SelectOptions from "./SelectOptions";
+import SelectOptions from "./OptionList";
 
 const StyledSelectTag = styled.div`
     display: flex;

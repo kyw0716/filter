@@ -23,6 +23,7 @@ const StyledCategory = styled.div`
     border-radius: 10px;
     &:hover{
         background-color: #fa2911;
+        cursor: pointer;
     }
 `
 

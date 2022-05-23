@@ -16,6 +16,9 @@ const StyledSelectedValue = styled.div`
     background-color: #262626;
     color: #cfd1d0;
     font-weight: bold;
+    &:hover{
+        cursor: pointer;
+    }
 `
 const StyledSelectedValueClicked = styled.div`
     display: flex;
@@ -27,9 +30,12 @@ const StyledSelectedValueClicked = styled.div`
     position: relative;
     border-radius: 7px;
     border: 2px solid #fa2911;
-    background-color: #242424;
+    background-color: #1a1a1a;
     color: #cfd1d0;
     font-weight: bold;
+    &:hover{
+        cursor: pointer;
+    }
 `
 
 const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`

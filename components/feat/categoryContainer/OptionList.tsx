@@ -32,15 +32,17 @@ type Props = {
     menuList : string[]
     setSelected: React.Dispatch<SetStateAction<string[]>>
     selected : string[]
+    setIsClicked : React.Dispatch<SetStateAction<boolean>>
 }
 
-function SelectOptions({listName, menuList, setSelected, selected} : Props) {
+function SelectOptions({listName, menuList, setSelected, selected, setIsClicked} : Props) {
     
     const categoryOnClick = (event : React.MouseEvent<HTMLDivElement>) => {
-        let selectedValue : string = (event.target as HTMLDivElement).id
+        let selectedValue : string = (event.target as HTMLDivElement).id;
         if(selected.filter(current => current === selectedValue).length === 0){
-            setSelected(current => [(event.target as HTMLDivElement).id ,...current])
+            setSelected(current => [selectedValue ,...current]);
         }
+        setIsClicked(false);
     }
 
     return(

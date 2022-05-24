@@ -1,7 +1,7 @@
 import React, { SetStateAction, useState } from "react";
 import styled from "styled-components";
 import Select from "./Select";
-import SelectOptions from "./OptionList";
+import OptionList from "./OptionList";
 
 const StyledSelectTag = styled.div`
     display: flex;
@@ -24,7 +24,7 @@ function CustomSelect({selectName, listName, menuList, setSelected, selected} : 
             <Select selectName={selectName} setIsClicked={setIsClicked} isClicked={isClicked}/>
             {
                 isClicked &&
-                    <SelectOptions listName={listName} menuList={menuList} setSelected={setSelected} selected={selected}/>
+                    <OptionList listName={listName} menuList={menuList} setSelected={setSelected} selected={selected} setIsClicked={setIsClicked}/>
             }
         </StyledSelectTag>
     )
